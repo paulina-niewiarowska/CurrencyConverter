@@ -5,7 +5,6 @@
 This project was generated using [Nx](https://nx.dev).
 
 # Quick Start
-1. Run `npm install`
-2. Run `docker compose up -d`
-3. Run `npm start api`
-4. Run in another tab `npm start currencyconverter`
+1. Run `npm install` - this will install all required node dependencies
+2. Run `npm run startup` - this will build docker compose and run both projects (api & front) in parallel
+3. Open `localhost:4200`

@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ItemDTO } from '@currencyconverter/api-interfaces';
-import * as JsonToXML from "js2xmlparser";
+import { XMLBuilder } from 'fast-xml-parser';
 import { saveAs } from 'file-saver';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class XMLDownloaderService {
+  constructor() {}
 
-  constructor() { }
-
-  saveItems(items: ItemDTO[]){
-    const xmlString = JsonToXML.parse("invoice", {item: items});
-    const blob = new Blob([xmlString], {type: "text/plain;charset=utf-8"});
+  saveItems(items: ItemDTO[]) {
+    const builder = new XMLBuilder({});
+    const xmlString = builder.build({ invoice: { item: items } });
+    const blob = new Blob([xmlString], { type: 'text/plain;charset=utf-8' });
     const now = new Date();
     saveAs(blob, `invoice-${now.toLocaleString()}.xml`);
   }
-
-
 }
