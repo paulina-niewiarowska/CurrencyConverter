@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { SearchParams } from './components/searchbox/searchbox.component';
 
-export enum v {
+export enum TabsEnum {
   Empty, AddItemBox, ItemsTable, SearchingBox
 }
 
@@ -12,38 +11,35 @@ export enum v {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public activeTab: v = v.ItemsTable; //v.Empty;
+  public activeTab: TabsEnum = TabsEnum.Empty;
   public searchPar?: SearchParams;
 
-  constructor(private http: HttpClient) {}
-
-
   toggleAddItemBox(){
-    this.activeTab = v.AddItemBox;
+    this.activeTab = TabsEnum.AddItemBox;
   }
 
   toggleItemsTable(){
-     this.activeTab = v.ItemsTable;
+     this.activeTab = TabsEnum.ItemsTable;
      this.searchPar = undefined;
   }
 
   toggleSearchingBox(){
-    if(this.activeTab === v.SearchingBox)
-    this.activeTab = v.ItemsTable;
+    if(this.activeTab === TabsEnum.SearchingBox)
+    this.activeTab = TabsEnum.ItemsTable;
     else
-    this.activeTab = v.SearchingBox;
+    this.activeTab = TabsEnum.SearchingBox;
   }
 
   isTableActive(): boolean {
-    return this.activeTab===v.ItemsTable;
+    return this.activeTab===TabsEnum.ItemsTable;
   }
 
   isAddingBoxActive(): boolean {
-    return this.activeTab===v.AddItemBox;
+    return this.activeTab===TabsEnum.AddItemBox;
   }
 
   isSearchBoxActive():boolean {
-    return this.activeTab===v.SearchingBox;
+    return this.activeTab===TabsEnum.SearchingBox;
   }
 
   onSearch(searchingEvent: SearchParams) {
