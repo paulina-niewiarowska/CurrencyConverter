@@ -1,0 +1,97 @@
+{
+  "projectType": "application",
+  "root": "apps/currencyconverter",
+  "sourceRoot": "apps/currencyconverter/src",
+  "prefix": "currencyconverter",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/currencyconverter",
+        "index": "apps/currencyconverter/src/index.html",
+        "main": "apps/currencyconverter/src/main.ts",
+        "polyfills": "apps/currencyconverter/src/polyfills.ts",
+        "tsConfig": "apps/currencyconverter/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/currencyconverter/src/favicon.ico",
+          "apps/currencyconverter/src/assets"
+        ],
+        "styles": ["apps/currencyconverter/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/currencyconverter/src/environments/environment.ts",
+              "with": "apps/currencyconverter/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "currencyconverter:build:production"
+        },
+        "development": {
+          "browserTarget": "currencyconverter:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/currencyconverter/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "currencyconverter:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/currencyconverter/src/**/*.ts",
+          "apps/currencyconverter/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/currencyconverter"],
+      "options": {
+        "jestConfig": "apps/currencyconverter/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

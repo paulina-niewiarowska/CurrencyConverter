@@ -1,0 +1,5 @@
+<div>
+    <br>
+    <input class="inputbox" [ngModel]="searchValue" placeholder="Search by item's name" (ngModelChange)="searchForName($event)">
+    <input class="inputbox" [ngModel]="searchDate" type="date" [max]="dateNow" (ngModelChange)="searchForDate($event)">
+</div>

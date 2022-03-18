@@ -1,0 +1,11 @@
+
+<div>
+    <br>
+    <p>Insert name of your item and its price in USD and pick the day that will be used for currency convertion.</p>
+    <input class="inputbox" [(ngModel)]="newItem.addNameValue" placeholder="Item's name">
+    <input class="inputbox" [(ngModel)]="newItem.addConvDateValue" type="date" [max]="dateNow">
+    <input class="inputbox" [(ngModel)]="newItem.addUSDPriceValue" type="number" placeholder="Item's price in USD">
+    <currencyconverter-button buttontext="Add" (buttonclick)="addNew()"></currencyconverter-button>
+    <p *ngIf="addedItem!==undefined">Item {{addedItem.name}} added successfully.<br>Click on "Show all" button to see it.</p>
+    <p *ngIf="error">{{error}}</p>
+</div>

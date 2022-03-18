@@ -1,0 +1,30 @@
+// :host {
+//   position: relative;
+//   display: inline;
+// }
+
+.floating {
+  // position: absolute;
+  // top: 6px;
+  // left: 10px;
+  width: 20px;
+  height: 20px;
+  color: rgb(201, 90, 173);
+
+    cursor: pointer;
+    &.up::after {
+      content: ' ↑';
+    }
+
+    &.down::after {
+      content: ' ↓';
+    }
+  
+}
+
+
+.table-header-btn{
+  width: 100%;
+  background-color: rgb(233, 203, 228);
+  font-weight: bold;
+}

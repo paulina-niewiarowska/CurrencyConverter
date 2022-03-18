@@ -1,0 +1,13 @@
+version: '3'
+services:
+  converter:
+    image: mysql
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+    environment:
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=dbpassw0rd
+      - MYSQL_DATABASE=dbconverter
+      - MYSQL_ROOT_PASSWORD=rootdbpass

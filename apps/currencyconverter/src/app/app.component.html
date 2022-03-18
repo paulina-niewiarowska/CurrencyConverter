@@ -1,0 +1,29 @@
+
+<h3>Your shopping list's price in PLN</h3>
+<br>
+
+<currencyconverter-button 
+    buttontext="Add item"
+    (buttonclick)="toggleAddItemBox()">
+</currencyconverter-button>
+
+<currencyconverter-button
+    buttontext="Show all"
+    (buttonclick)="toggleItemsTable()"
+>
+</currencyconverter-button>
+
+<currencyconverter-button
+    buttontext="Search"
+    (buttonclick)="toggleSearchingBox()"
+>
+</currencyconverter-button>
+
+
+<br>
+
+<currencyconverter-searchbox *ngIf="isSearchBoxActive()" (searchNow)="onSearch($event)"></currencyconverter-searchbox>
+
+<currencyconverter-table *ngIf="isTableActive() || isSearchBoxActive()" [searchParams]="searchPar"></currencyconverter-table>
+
+<currencyconverter-addingbox *ngIf="isAddingBoxActive()"></currencyconverter-addingbox>

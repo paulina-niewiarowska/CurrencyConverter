@@ -1,0 +1,28 @@
+{
+  "root": "apps/currencyconverter-e2e",
+  "sourceRoot": "apps/currencyconverter-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/currencyconverter-e2e/cypress.json",
+        "devServerTarget": "currencyconverter:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "currencyconverter:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/currencyconverter-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["currencyconverter"]
+}

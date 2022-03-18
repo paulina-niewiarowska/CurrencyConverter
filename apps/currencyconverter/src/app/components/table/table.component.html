@@ -1,0 +1,67 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        <currencyconverter-sorting name="id" (sort)="onSort('id', $event)">
+          <span>Id</span>
+        </currencyconverter-sorting>
+      </th>
+      <th>
+        <currencyconverter-sorting name="name" (sort)="onSort('name', $event)">
+          <span>Item Name</span>
+        </currencyconverter-sorting>
+      </th>
+      <th>
+        <currencyconverter-sorting name="date" (sort)="onSort('date', $event)">
+          <span>Accounting Date</span>
+        </currencyconverter-sorting>
+      </th>
+      <th>
+        <currencyconverter-sorting name="currencyDate" (sort)="onSort('currencyDate', $event)">
+          <span>Converting Date</span>
+        </currencyconverter-sorting>
+      </th>
+      <th>
+        <currencyconverter-sorting name="usd" (sort)="onSort('usd', $event)">
+          <span>Price - USD</span>
+        </currencyconverter-sorting>
+      </th>
+      <th>
+        <currencyconverter-sorting name="pln" (sort)="onSort('pln', $event)">
+          <span>Price - PLN</span>
+        </currencyconverter-sorting>
+      </th>
+      <th>
+        <span>Options</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of itemsToDisplay">
+      <td>
+        {{ item.id }}
+      </td>
+      <td>
+        {{ item.name }}
+      </td>
+      <td>
+        {{ item.accountingDate | date }}
+      </td>
+      <td>
+        {{ item.currencyConvertingDate | date }}
+      </td>
+      <td>
+        {{ item.costUSDinPenny / 100 }}
+      </td>
+      <td>
+        {{ item.costPLNinGrosze! / 100 }}
+      </td>
+      <td>
+        <button class="btn">Edit</button>
+        <button class="btn">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<currencyconverter-button buttontext="Export to xml" (buttonclick)="xmlExport()"></currencyconverter-button>
